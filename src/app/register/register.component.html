@@ -1,0 +1,181 @@
+<div class="col col-xs-12 offset-md-3 col-md-6">
+
+  <form [formGroup]="registrationFG">
+    <div class="form-group row">
+
+      <!-- First Name -->
+      <div class="mt-3 col col-xs-12 col-sm-12 col-md-6">
+        <label for="firstName">First Name</label>
+        <input type="test"
+               id="firstName"
+               [ngClass]='{ "is-valid":firstNameFC.valid, 
+                             "is-invalid": firstNameFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="first name"
+               [formControl]="firstNameFC"
+               placeholder="First Name">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : firstNameFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+      
+      <!-- Last Name -->
+      <div class="mt-3 col col-xs-12 col-sm-12 col-md-6">
+        <label for="lastName">Last Name</label>
+        <input type="test"
+               id="lastName"
+               [ngClass]='{ "is-valid":lastNameFC.valid, 
+                             "is-invalid": lastNameFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="last name"
+               [formControl]="lastNameFC"
+               placeholder="Last Name">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : lastNameFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      
+      <!-- Birthdate -->
+      <div class="mt-3 col-xs-12 col-12 col-md-12">
+        <label for="birthDate">Birthdate</label>
+        <input type="text"
+               id="birthDate"
+               formControlName="dateOfBirth"
+               placeholder="Birthdate"
+               class="form-control"
+               [ngClass]='{ "is-valid": dateOfBirthFC.valid, 
+                             "is-invalid": dateOfBirthFC.invalid && isSubmitted }'
+               [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+               bsDatepicker>
+        <!-- <div class="invalid-feedback animated" --> 
+        <!--      [ngClass]="{'fadeIn' : dateOfBirthFC.invalid && isSubmitted}"> -->
+        <!--   Please fill out. -->
+        <!-- </div> -->
+      </div>
+
+      <!-- Email -->
+      <div class="mt-3 col-12">
+        <label for="email" type="email">Email</label>
+        <input type="email"
+               id="email"
+               [ngClass]='{ "is-valid": emailFC.valid, 
+                             "is-invalid": emailFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="email"
+               [formControl]="emailFC"
+               placeholder="email">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : emailFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Mobile -->
+      <div class="mt-3 col-12">
+        <label for="mobileNumber">Mobile Number</label>
+        <input type="text"
+               id="mobileNumber"
+               [ngClass]='{ "is-valid":mobileFC.valid, 
+                             "is-invalid": mobileFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="mobile number"
+               [formControl]="mobileFC"
+               placeholder="mobile"
+               required>
+        <small id="passwordHelpBlock" class="form-text text-muted">
+          We’ll call or text you to confirm your number. Standard message and data rates apply.
+        </small>
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : mobileFC.valid,
+                          'fadeIn' : mobileFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="mt-3 col-12">
+        <label for="password">Password</label>
+        <input type="password"
+               id="password"
+               [ngClass]='{ "is-valid":passwordFC.valid, 
+                             "is-invalid": passwordFC.invalid && isSubmitted }'
+               class="form-control"
+               [formControl]="passwordFC"
+               placeholder="password"
+               required>
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : passwordFC.valid,
+                          'fadeIn' : passwordFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+
+      <!-- Password Guidance -->
+      <div class="mt-3 mb-3 col-12">
+        <p class="p-0 mt-2 mb-0">Password strength: 
+        <span class="text-danger">week</span></p>
+
+        <p class="p-0 m-0"
+           [ngClass]="passwordReq.minLength ? 'text-success' : 'text-danger'">
+        <i class="fa fa-check-circle fa-fw bounceIn animated"
+           *ngIf="passwordReq.minLength"></i>
+        Must be a mininum of 6 characters long</p>
+
+        <p class="p-0 m-0"
+           [ngClass]="passwordReq.capital ? 'text-success' : 'text-danger'">
+        <i class="fa fa-check-circle fa-fw bounceIn animated"
+           *ngIf="passwordReq.capital"></i>
+        Must contain a capital letter</p>
+
+        <p class="p-0 m-0"
+           [ngClass]="passwordReq.num ? 'text-success' : 'text-danger'">
+        <i class="fa fa-check-circle fa-fw bounceIn animated"
+           *ngIf="passwordReq.num"></i>
+        Must contain a number character</p>
+
+        <p class="p-0 m-0"
+           [ngClass]="passwordReq.specialChar ? 'text-success' : 'text-danger'">
+        <i class="fa fa-check-circle fa-fw bounceIn animated"
+           *ngIf="passwordReq.specialChar"></i>
+        Must contain a special character</p>
+      </div>
+
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" 
+               class="custom-control-input" 
+               [formControl]="termsFC"
+               id="terms"
+               [ngClass]='{ "is-valid":termsFC.valid, 
+               "is-invalid": termsFC.invalid && isSubmitted }'
+               required>
+        <label class="custom-control-label" for="terms">
+          I accept the OverlandBnb <a href="">Terms</a> of Service
+        </label>
+      </div>
+
+    
+      <div class="mt-3 col-12">
+        <button
+          type="submit"
+          class="btn btn-outline-primary mr-1"
+          (click)="onSubmit()">
+          Sign Up
+        </button>
+        <a [routerLink]='["/"]'
+          class="btn btn-outline-secondary">
+          Cancel
+        </a>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- form submitted -->
+  <div *ngIf="isSubmitted && registrationFG.valid">
+    processing...
+  </div>
+</div>

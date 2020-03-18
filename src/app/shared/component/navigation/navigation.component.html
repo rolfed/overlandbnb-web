@@ -1,0 +1,73 @@
+<nav class="navbar navbar-light bg-light w-100">
+  <a class="navbar-brand" routerLink="/">OverlandBnb</a>
+  <form *ngIf="!isUserAuthenticated"
+        class="form-inline"
+        [formGroup]=loginFG>
+    <div class="input-group">
+      <input [formControl]="emailFC"
+             type="email" 
+             class="form-control mr-2" 
+             [ngClass]="{'is-invalid shake animated': emailFC.invalid && isSubmitted, 'is-valid': emailFC.valid}"
+             placeholder="email" 
+             aria-label="Username" 
+             aria-describedby="email">
+    </div>
+    <div class="input-group">
+      <input [formControl]="passwordFC"
+             type="password" 
+             class="form-control mr-2" 
+             [ngClass]="{'is-invalid shake animated' : passwordFC.invalid && isSubmitted, 'is-valid': passwordFC.valid}"
+             placeholder="password" 
+             aria-label="password" 
+             aria-describedby="password">
+    </div>
+    <button (click)="onSubmit()"
+            class="btn btn-outline-primary my-2 my-sm-0 mr-2" 
+            type="submit">Login
+            <i class="fadeIn animate fa fa-spinner fa-spin fa-1x" *ngIf="isSubmitted && loginFG.valid"></i>
+    </button>
+    <a [routerLink]="SIGN_UP"
+            class="btn btn-outline-primary my-2 my-sm-0 mr-2" 
+            type="submit">Sign Up</a>
+    <!-- <a [routerLink]="SIGN_UP" -->
+    <!--         *ngIf="hasAuthenticationFailed" -->
+    <!--         class="btn btn-outline-primary my-2 my-sm-0" --> 
+    <!--         type="submit">Reset Password</a> -->
+  </form>
+  <ng-container *ngIf="isUserAuthenticated">
+    <div class="btn-group w-25" dropdown placement="left">
+      <button dropdownToggle 
+              type="button" 
+              class="btn btn-link">
+        <img src="https://via.placeholder.com/30" class="rounded"> 
+      </button>
+      <ul *dropdownMenu class="dropdown-menu" role="menu">
+        <li role="menuitem"><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
+        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
+        </li>
+        <li role="menuitem"><a class="dropdown-item">
+            Log Out
+        </a></li>
+      </ul>
+    </div>
+  </ng-container>
+</nav>
+<div class="col-12" *ngIf="hasAuthenticationFailed">
+  <!-- ERROR MESSAGE -->
+  <div class="alert alert-danger mt-1 mr-2 float-right animated" 
+       [ngClass]="{'slideInRight': fadeInRight,
+                  'slideOutRight': fadeOutRight}"
+       role="alert">
+    <p>{{errorMessage ? errorMessage : 'Something went wrong'}}</p> 
+  </div>
+</div>
+
+<div class="col-12" *ngIf="isUserAuthenticated">
+  <!-- ERROR MESSAGE -->
+  <div class="alert alert-success mt-1 mr-2 float-right animated" 
+       [ngClass]="{'slideInRight': isUserAuthenticated,
+                  'slideOutRight': fadeOutRight}"
+       role="alert">
+    <p>Success! Welcome Danniel.</p>
+  </div>
+</div>
