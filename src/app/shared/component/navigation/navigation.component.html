@@ -2,7 +2,7 @@
   <a class="navbar-brand" routerLink="/">OverlandBnb</a>
   <form *ngIf="!isUserAuthenticated"
         class="form-inline"
-        [formGroup]=loginFG>
+        [formGroup]="loginFG">
     <div class="input-group">
       <input [formControl]="emailFC"
              type="email" 

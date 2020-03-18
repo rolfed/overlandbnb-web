@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SearchRoutingModule } from './search-routing.module';
 import { SearchComponent } from './search.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from "@angular/forms/forms";
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     SearchRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
   ]
 })

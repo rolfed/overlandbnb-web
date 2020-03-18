@@ -95,8 +95,9 @@ describe('AuthenticationService', () => {
         password: 'test123!@#',
         firstName: 'John',
         lastName: 'Smith',
-        dateOfBirth: '11/10/1990',
         mobileNumber: '5554443333',
+        dateOfBirth: '11/10/1990',
+        isMobile: true,
         isMobileValidated: true
       };
 

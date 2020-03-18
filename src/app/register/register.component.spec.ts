@@ -4,6 +4,7 @@ import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -16,10 +17,11 @@ describe('RegisterComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        BsDatepickerModule.forRoot()
       ],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
