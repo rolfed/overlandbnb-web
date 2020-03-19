@@ -9,6 +9,7 @@ import { NavigationComponent } from './shared/component/navigation/navigation.co
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ErrorInterceptor } from './shared/interceptor/error-interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
   ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+  providers: [ErrorInterceptor], 
+  bootstrap: [AppComponent] 
+}) 
 export class AppModule { }

@@ -2,19 +2,13 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-const apiPort = 8080;
-const apiHost = 'localhost';
-const apiVersion = 'v1/api';
+const apiHost = '/docker/v1/api';
 
 export const environment = {
   production: false,
-  env: 'dev',
-  accountCreateEndpoint: `${apiHost}:${apiPort}/${apiVersion}/account/new`,
-  accountLoginEndpoint: `${apiHost}:${apiPort}/${apiVersion}/account/login`,
-
-
-  // ELK Stack
-  elasticSearchEndpoint: ''
+  env: 'docker',
+  accountCreateEndpoint: `${apiHost}/account/new`,
+  accountLoginEndpoint: `${apiHost}/account/login`,
 };
 
 /*

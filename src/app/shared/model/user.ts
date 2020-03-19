@@ -1,3 +1,13 @@
+export interface User {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  jwt?: string;
+  status: boolean;
+  message: string;
+}
+
 export interface UserCredential {
   email: string;
   password: string;

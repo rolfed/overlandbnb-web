@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 import { AuthenticationService } from '../../service/authentication.service';
-import { UserResponse, Status } from '../../model/userResponse';
+import { User, Status } from '../../model/user';
 
 @Component({
   selector: 'ovb-navigation',
@@ -22,7 +22,7 @@ export class NavigationComponent implements OnInit {
     email: this.emailFC,
     password: this.passwordFC
   });
-  public user: UserResponse;
+  public user: User;
   public isUserAuthenticated = false;
   public isSubmitted = false;
   public errorMessage: string;

@@ -79,11 +79,15 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "overlandbnb-web:build"
+            "browserTarget": "overlandbnb-web:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
               "browserTarget": "overlandbnb-web:build:production"
+            },
+            "docker": {
+              "browserTarget": "overlandbnb-web:build:docker"
             }
           }
         },
