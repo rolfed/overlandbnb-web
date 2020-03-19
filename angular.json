@@ -45,6 +45,14 @@
                 }
               ]
             },
+            "stage": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.stage.ts"
+                }
+              ]
+            },
             "production": {
               "fileReplacements": [
                 {
@@ -88,6 +96,9 @@
             },
             "docker": {
               "browserTarget": "overlandbnb-web:build:docker"
+            },
+            "stage": {
+              "browserTarget": "overlandbnb-web:build:stage"
             }
           }
         },
