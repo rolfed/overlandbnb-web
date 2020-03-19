@@ -6,7 +6,6 @@ export const environment = {
   accountCreateEndpoint: `${apiHost}/account/new`,
   accountLoginEndpoint: `${apiHost}/account/login`,
 
-  // ELK Stack
-  elasticSearchEndpoint: ''
+  account: `${apiHost}/account`,
 
 };

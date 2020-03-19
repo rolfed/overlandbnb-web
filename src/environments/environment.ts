@@ -9,6 +9,7 @@ export const environment = {
   env: 'docker',
   accountCreateEndpoint: `${apiHost}/account/new`,
   accountLoginEndpoint: `${apiHost}/account/login`,
+  account: `${apiHost}/account`,
 };
 
 /*

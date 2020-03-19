@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 import { AuthenticationService } from '../../service/authentication.service';
 import { User, Status } from '../../model/user';
+import { first } from "rxjs/internal/operators/first";
 
 @Component({
   selector: 'ovb-navigation',
@@ -48,6 +49,7 @@ export class NavigationComponent implements OnInit {
     // Only make call if form group is valid
     if (this.loginFG.valid) {
       this.authService.login({email: this.emailFC.value, password: this.passwordFC.value})
+      .pipe(first())
         .subscribe(userResponse => {
           this.user = userResponse;
           this.isUserAuthenticated = this.user.status;
@@ -57,6 +59,7 @@ export class NavigationComponent implements OnInit {
               this.errorMessage = error.error.message;
             }
             this.hasAuthenticationFailed = true;
+
             // Auth has failed animate error message
             this.fadeInRight = true;
             this.clearErrorMessage();
@@ -64,6 +67,12 @@ export class NavigationComponent implements OnInit {
     }
 
     this.resetFormValidation();
+  }
+
+  public logout(): void {
+    console.log('LOG OUT');
+    this.isUserAuthenticated = false;
+    this.authService.logout();
   }
 
   private resetFormValidation() {

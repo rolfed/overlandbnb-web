@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:docker": "npm run start --configuration=docker",
-    "start:stage": "npm run start --configuration=stage",
+    "start:docker": "ng s -c docker",
+    "start:stage": "ng s -c stage",
     "test:coverage": "npm run test --browsers=PhantomJS --code-coverage",
     "build:ci": "npm run test && ng lint && npm run build --prod",
     "test:ci": "npm run test --watch=false --browsers=PhantomJS --code-coverage"

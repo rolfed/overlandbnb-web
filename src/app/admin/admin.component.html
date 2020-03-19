@@ -1,0 +1,29 @@
+<div class="row mb-5">
+  <div class="col-12">
+    <h2>Admin Panel</h2>
+  </div>
+</div>
+
+<form [formGroup]="userFG" (click)="getUserById(userIdFC.value)">
+  <div class="form-group form-row">
+    <label for="userId"
+           class="col-12">User ID:</label>
+    <input type="text" 
+           class="col-12 form-control"
+           [formControl]="userIdFC" 
+           aria-describedby="userIdHelp"
+           placeholder="User Id"
+           id="userId">
+    <small id="userIdHelp"
+           class="col-12 form-text text-muted">
+      Something important</small>
+  </div>
+  <button
+           class="btn btn-primary" 
+          type="button">
+    Search</button>
+</form>
+
+<div *ngIf="isLoading">
+  {{user | json}}
+</div>

@@ -5,6 +5,8 @@ export const environment = {
   env: 'prod',
   accountCreateEndpoint: `${apiHost}/account/new`,
   accountLoginEndpoint: `${apiHost}/account/login`,
+
+  user: `${apiHost}/user`,
 };
 
 

@@ -24,7 +24,8 @@
     <button (click)="onSubmit()"
             class="btn btn-outline-primary my-2 my-sm-0 mr-2" 
             type="submit">Login
-            <i class="fadeIn animate fa fa-spinner fa-spin fa-1x" *ngIf="isSubmitted && loginFG.valid"></i>
+            <i class="fadeIn animate fa fa-spinner fa-spin fa-1x" 
+              *ngIf="isSubmitted && loginFG.valid"></i>
     </button>
     <a [routerLink]="SIGN_UP"
             class="btn btn-outline-primary my-2 my-sm-0 mr-2" 
@@ -45,7 +46,9 @@
         <li role="menuitem"><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
         <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
         </li>
-        <li role="menuitem"><a class="dropdown-item">
+        <li role="menuitem"><a 
+            (click)="logout()"
+            class="dropdown-item">
             Log Out
         </a></li>
       </ul>
