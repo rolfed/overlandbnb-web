@@ -13,6 +13,10 @@ export interface User {
   message: string;
 }
 
+export interface AccountResponse extends Status {
+  account: User
+}
+
 export interface UserCredential {
   email: string;
   password: string;

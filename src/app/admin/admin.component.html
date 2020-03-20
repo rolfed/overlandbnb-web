@@ -1,12 +1,19 @@
-<div class="row mb-5">
+<div class="row">
   <div class="col-12">
     <h2>Admin Panel</h2>
   </div>
 </div>
 
-<!-- Table Search Items -->
-
-<!-- Table -->
+<div class="row align-items-center mh-100" *ngIf="!users">
+  <div class="col d-flex justify-content-center">
+    <i class="fa fa-spinner fa-spin fa-5x" aria-hidden="true"></i>
+  </div>
+</div>
+<div class="row mt-5">
+  <div class="col-12">
+    <ovb-user-table [userData]="users" *ngIf="users"></ovb-user-table> 
+  </div>
+</div>
 
 <!-- <form [formGroup]="userFG" (click)="getUserById(userIdFC.value)"> -->
 <!--   <div class="form-group form-row"> -->

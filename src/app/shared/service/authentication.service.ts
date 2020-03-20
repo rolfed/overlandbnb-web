@@ -3,7 +3,7 @@ import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
-import { CreateUserRequest, UserCredential, UserResponse, Status, User } from '../model/user';
+import { CreateUserRequest, UserCredential, UserResponse, Status, User, AccountResponse } from '../model/user';
 import { Router } from "@angular/router";
 
 
@@ -11,8 +11,8 @@ import { Router } from "@angular/router";
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>; 
+  private currentUserSubject: BehaviorSubject<AccountResponse>;
+  public currentUser: Observable<AccountResponse>; 
 
   private readonly CURRENT_USER = 'currentUser';
 
@@ -20,12 +20,12 @@ export class AuthenticationService {
     private http: HttpClient,
     private router: Router
   ) {
-    this.currentUserSubject = new BehaviorSubject<User>(
+    this.currentUserSubject = new BehaviorSubject<AccountResponse>(
       JSON.parse(localStorage.getItem(this.CURRENT_USER)));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): AccountResponse {
     return this.currentUserSubject.value;
   }
 
@@ -37,8 +37,8 @@ export class AuthenticationService {
    * 500 Internal Server Error
    * @param credential email string, password string
    */
-  public login(credential: UserCredential): Observable<User> {
-    return this.http.post<User>(environment.accountLoginEndpoint, credential).pipe(
+  public login(credential: UserCredential): Observable<AccountResponse> {
+    return this.http.post<AccountResponse>(environment.accountLoginEndpoint, credential).pipe(
       map(user => {
         localStorage.setItem(this.CURRENT_USER, JSON.stringify(user));
         this.currentUserSubject.next(user); 
@@ -69,7 +69,7 @@ export class AuthenticationService {
    */
   public logout(): void {
     // remove user from local storage to log user out
-    localStorage.removeItem(this.CURRENT_USER);
+    localStorage.clear()
     this.currentUserSubject.next(null);
     this.router.navigate(['/']);
   }

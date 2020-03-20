@@ -19,7 +19,6 @@ export class AdminComponent implements OnInit {
   public userFG: FormGroup = new FormGroup({
     userID: this.userIdFC
   });
-  public isLoading = false;
   public user: User;
   public users: User[]; 
 
@@ -35,16 +34,16 @@ export class AdminComponent implements OnInit {
     ).subscribe( user => {
       console.log('USER: ', user);
       this.user = user;
-      this.isLoading = false;
     });
   } 
 
   public getAllUsers(): void {
     this.userService.getAll().subscribe(
       users => {
-        this.users = users;
-        console.log('ALL USERS: ', this.users);
-        this.isLoading = false;
+        if (!!users && !!users.account) {
+          this.users = users.account;
+          console.log('ALL USERS: ', this.users);
+        }
       },
       error => {
         console.error('ERROR: ', error);

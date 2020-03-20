@@ -7,14 +7,17 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtInterceptor } from "../shared/interceptor/jwt-interceptor";
 import { ErrorInterceptor } from "../shared/interceptor/error-interceptor";
+import { NgxDatatableModule } from "@swimlane/ngx-datatable";
+import { UserTableComponent } from './user-table/user-table.component'
 
 @NgModule({
-  declarations: [AdminComponent],
+  declarations: [AdminComponent, UserTableComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxDatatableModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
