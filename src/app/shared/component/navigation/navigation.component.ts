@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 import { AuthenticationService } from '../../service/authentication.service';
@@ -11,6 +11,8 @@ import { first } from "rxjs/internal/operators/first";
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
+  @Input() user: User;
+
   public emailFC: FormControl = new FormControl('', [
     Validators.required,
     Validators.email
@@ -23,7 +25,7 @@ export class NavigationComponent implements OnInit {
     email: this.emailFC,
     password: this.passwordFC
   });
-  public user: User;
+  // public user: User;
   public isUserAuthenticated = false;
   public isSubmitted = false;
   public errorMessage: string;
@@ -38,6 +40,10 @@ export class NavigationComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if (!!this.user) {
+      console.log('USER: ', this.user);
+      this.isUserAuthenticated = true;
+    }
   }
 
   public onSubmit() {

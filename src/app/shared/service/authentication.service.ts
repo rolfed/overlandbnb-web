@@ -4,6 +4,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { environment } from '../../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { CreateUserRequest, UserCredential, UserResponse, Status, User } from '../model/user';
+import { Router } from "@angular/router";
 
 
 @Injectable({
@@ -17,6 +18,7 @@ export class AuthenticationService {
 
   constructor(
     private http: HttpClient,
+    private router: Router
   ) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem(this.CURRENT_USER)));
@@ -69,6 +71,7 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem(this.CURRENT_USER);
     this.currentUserSubject.next(null);
+    this.router.navigate(['/']);
   }
 }
 

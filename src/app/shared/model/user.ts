@@ -1,8 +1,13 @@
 export interface User {
-  email: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  userId?: number; 
+  email?: string; 
+  firstName?: string;
+  lastName?: string;
+  dateOfBirth?: Date;
+  isMobile?: boolean;
+  isMobileVerified?: boolean; 
+  permission?: Permission
+  createdAt?: string; 
   jwt?: string;
   status: boolean;
   message: string;
@@ -34,4 +39,10 @@ export interface Status {
 
 export interface UserResponse extends Status {
   account: Account;
+}
+
+export enum Permission {
+  USER = "USER",
+  HOST = "HOST",
+  ADMIN = "ADMIN"
 }
