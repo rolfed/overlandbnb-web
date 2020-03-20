@@ -23,7 +23,7 @@
     </div>
     <button (click)="onSubmit()"
             class="btn btn-outline-primary my-2 my-sm-0 mr-2" 
-            type="submit">Login
+            type="button">Login
             <i class="fadeIn animate fa fa-spinner fa-spin fa-1x" 
               *ngIf="isSubmitted && loginFG.valid"></i>
     </button>
@@ -43,12 +43,19 @@
         <img src="https://via.placeholder.com/30" class="rounded"> 
       </button>
       <ul *dropdownMenu class="dropdown-menu" role="menu">
-        <li role="menuitem"><a class="dropdown-item" routerLink="/dashboard">Dashboard</a></li>
-        <li role="menuitem"><a class="dropdown-item" href="#">Another action</a>
-        </li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/admin">
+            <i class="fa fa-cogs fa-fw" aria-hidden="true"></i>
+            Admin</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/dashboard">
+            <i class="fa fa-tachometer fa-fw" aria-hidden="true"></i>
+            Dashboard</a></li>
+        <li role="menuitem"><a class="dropdown-item" routerLink="/profile">
+            <i class="fa fa-user fa-fw" aria-hidden="true"></i>
+            Profile</a></li>
         <li role="menuitem"><a 
             (click)="logout()"
             class="dropdown-item">
+            <i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>
             Log Out
         </a></li>
       </ul>
