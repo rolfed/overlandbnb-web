@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from "@angular/forms";
 import { UserService } from "../shared/service/user.service";
 import { first } from "rxjs/internal/operators/first";
-import { User } from "../shared/model/user";
+import { User, AccountsResponse } from "../shared/model/user";
 
 export interface UsersViewModel {
   user: User[]
@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
     userID: this.userIdFC
   });
   public user: User;
-  public users: User[]; 
+  public users: AccountsResponse; 
 
   constructor(private userService: UserService) { }
 
@@ -32,7 +32,6 @@ export class AdminComponent implements OnInit {
     this.userService.getUserById(id).pipe(
       first()
     ).subscribe( user => {
-      console.log('USER: ', user);
       this.user = user;
     });
   } 
@@ -40,9 +39,9 @@ export class AdminComponent implements OnInit {
   public getAllUsers(): void {
     this.userService.getAll().subscribe(
       users => {
-        if (!!users && !!users.account) {
-          this.users = users.account;
-          console.log('ALL USERS: ', this.users);
+        if (!!users && users.accounts) {
+          console.log('USERS: ', users);
+          this.users = users;
         }
       },
       error => {

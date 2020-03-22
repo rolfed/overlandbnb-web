@@ -32,6 +32,9 @@
               "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
               "node_modules/animate.css/animate.min.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
+              "node_modules/@swimlane/ngx-datatable/index.scss",
+              "node_modules/@swimlane/ngx-datatable/themes/material.scss",
+              "node_modules/@swimlane/ngx-datatable/assets/icons.css",
               "src/scss/styles.scss"
             ],
             "scripts": []

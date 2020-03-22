@@ -8,10 +8,12 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { JwtInterceptor } from "../shared/interceptor/jwt-interceptor";
 import { ErrorInterceptor } from "../shared/interceptor/error-interceptor";
 import { NgxDatatableModule } from "@swimlane/ngx-datatable";
-import { UserTableComponent } from './user-table/user-table.component'
+import { UserTableComponent } from './user-table/user-table.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserEditComponent } from './user-edit/user-edit.component'
 
 @NgModule({
-  declarations: [AdminComponent, UserTableComponent],
+  declarations: [AdminComponent, UserTableComponent, UserProfileComponent, UserEditComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,

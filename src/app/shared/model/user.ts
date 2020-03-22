@@ -13,8 +13,17 @@ export interface User {
   message: string;
 }
 
+export interface Status {
+  message: string;
+  status: boolean;
+}
+
 export interface AccountResponse extends Status {
   account: User
+}
+
+export interface AccountsResponse {
+  accounts: Array<User>;
 }
 
 export interface UserCredential {
@@ -34,11 +43,6 @@ export interface CreateUserRequest extends UserCredential {
 
 export interface Account extends UserCredential {
   jwt: string;
-}
-
-export interface Status {
-  message: string;
-  status: boolean;
 }
 
 export interface UserResponse extends Status {

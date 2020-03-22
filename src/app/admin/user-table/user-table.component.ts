@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User } from "../../shared/model/user";
-import { ColumnMode  } from '@swimlane/ngx-datatable';
+import { User, AccountsResponse } from "../../shared/model/user";
+import { ColumnMode, SelectionType  } from '@swimlane/ngx-datatable';
+import { Router } from "@angular/router";
+import { UserService } from "../../shared/service/user.service";
 
 @Component({
   selector: 'ovb-user-table',
@@ -8,27 +10,45 @@ import { ColumnMode  } from '@swimlane/ngx-datatable';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent implements OnInit {
-  @Input() userData: User[];
+  @Input() userData: AccountsResponse;
   ColumnMode = ColumnMode;
+  SelectionType = SelectionType;
+  public columns = [];
+  public rows = [];
+  public selected = [];
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngOnInit() {
+    console.log('Acccounts: ', this.userData);
     if (!!this.userData) {
       this.generateColumns(this.userData);
       this.generateRows(this.userData);
     }
   }
+
+  public onSelect({ selected }) {
+    this.userService.user = this.selected as any;
+
+    let userDetail = {
+      queryParams: { 'userId': this.selected[0].userId }
+    };
+
+    this.router.navigate(['/admin/user'], userDetail);
+  }
+
+  public onActivate(event) {
+    console.log('Activated Event ', event);
+  }
   
   /**
    * Generate column labels from account object
    */
-  public columns = [];
-  public generateColumns(userData: User[]) {
-    console.log('CALL GENERATE COLUMNS');
-    console.log('DATA: ', Object.keys(userData[0]));
-
-    Object.keys(userData[0]).map(
+  private generateColumns(userData: AccountsResponse) {
+    Object.keys(userData.accounts[0]).map(
       key => {
         const label = {name: key};
         this.columns.push(label)
@@ -40,9 +60,8 @@ export class UserTableComponent implements OnInit {
   /**
    * Generate row labels from account object
    */
-  public rows = [];
-  public generateRows(userData: User[]) {
-    userData.map(account => {
+  private generateRows(userData: AccountsResponse) {
+    userData.accounts.map(account => {
       const value = {
         userId: account.userId,
         email: account.email,
@@ -54,7 +73,6 @@ export class UserTableComponent implements OnInit {
         permission: account.permission,
         createdAt: account.createdAt
       };
-      console.log('ACCOUNT: ', value);
       this.rows.push(value);
     });
   }

@@ -1,0 +1,76 @@
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+  <div class="col p-4 d-flex flex-column position-static">
+
+    <h2 class="mb-1 mb-1 text-primary">
+      {{user.firstName}} {{user.lastName}}
+    </h2>
+
+    <p class="d-inline-block mb-2 text-primary">
+      <span class="text-muted">User Id: </span> 
+      {{user.userId}}
+    </p>
+
+    <p class="d-inline-block mb-2 text-primary">
+      <span class="text-muted">Permission: </span> 
+      {{user.permission}}
+    </p>
+
+    <p class="card-text mb-1">
+      <span class="text-muted">Created At: </span> 
+      {{user.createdAt | date}}
+    </p>
+
+    <p class="card-text mb-3">
+      <span class="text-muted"> Date of Birth:</span> 
+      {{user.dateOfBirth | date}}
+    </p>
+
+    <!-- Email -->
+    <p class="card-text mb-1">
+    <span class="text-muted"><i class="fa fa-envelope-o fa-fw" aria-hidden="true"></i> Email: </span> 
+      {{user.email}}
+      <i class="fa fa-certificate fa-fw text-success" aria-hidden="true"></i> Verified 
+    </p>
+
+    <!-- Phone -->
+    <p class="text-muted mb-1"><i class="fa fa-phone fa-fw" aria-hidden="true"></i> (209) 915-2208 
+    <i class="fa fa-certificate fa-fw text-success" aria-hidden="true"></i> Verified</p> 
+
+    <p class="text-muted mb-3">
+    <i class="fa fa-phone fa-fw" aria-hidden="true"></i> (209) 915-2208 
+    </p>
+
+    <!-- Address -->
+    <p class="text-muted mb-1"><i class="fa fa-address-card-o fa-fw" aria-hidden="true"></i> Address</p>
+    <p class="card-text mb-1">223 NE 56th Ave</p>
+    <p class="card-text mb-auto">Hillsboro, OR 97124</p>
+
+    <!-- EDIT -->
+    <button (click)="editUser()" 
+       type="button" 
+       class="stretched-link btn btn-outline-primary">
+      Edit
+    </button>
+  </div>
+
+
+  <!-- PROFILE IMG -->
+  <div class="col-auto d-none d-lg-block w-50">
+    <img class="card-img-right" src="https://www.quickanddirtytips.com/sites/default/files/images/8611/StubbornEmployeeshutterstock_260830952.jpg">
+    <!-- TODO add this when image is not present from user -->
+    <!-- <svg class="bd-placeholder-img" --> 
+    <!--      width="200" --> 
+    <!--      height="250" --> 
+    <!--      xmlns="http://www.w3.org/2000/svg" --> 
+    <!--      preserveAspectRatio="xMidYMid slice" --> 
+    <!--      focusable="false" --> 
+    <!--      role="img" --> 
+    <!--      aria-label="Placeholder: Thumbnail"> -->
+    <!--   <title>{{user.firstName}} {{user.lastName}}</title> -->
+    <!--   <rect width="100%" --> 
+    <!--   height="100%" --> 
+    <!--   fill="#55595c"> -->
+    <!--   </rect> -->
+    <!--   <text x="50%" y="50%" fill="#eceeef" dy=".3em">{{user.firstName}}</text></svg> -->
+  </div>
+</div>
