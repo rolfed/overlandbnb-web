@@ -12,8 +12,8 @@ export enum PasswordStrength {
 }
 
 export interface PasswordRequirement {
-  minLength: boolean; 
-  capital: boolean; 
+  minLength: boolean;
+  capital: boolean;
   num: boolean;
   specialChar: boolean;
 }
@@ -26,13 +26,13 @@ export interface PasswordRequirement {
 export class RegisterComponent implements OnInit {
   public isSubmitted = false;
   public isRegistrationSuccesful = false;
-  public passwordStrength: string; 
+  public passwordStrength: string;
   public passwordReq: PasswordRequirement = {
     minLength: false,
     capital: false,
     num: false,
     specialChar: false
-  }; 
+  };
 
   public firstNameFC: FormControl = new FormControl('', [
     Validators.required,
@@ -87,24 +87,6 @@ export class RegisterComponent implements OnInit {
     this.passwordFC.valueChanges.subscribe(
       value => {
         console.log('VALUE: ', value)
-        // Min length six
-        if (value.match(/^.{6,}$/)) {
-          this.passwordReq.minLength = true;
-        } else {
-          this.passwordReq.minLength = false;
-        }
-
-        // Contains Capital
-        if (value.match(/(?!^.*[A-Z].*$)/)) {
-          this.passwordReq.capital = true;
-        } else {
-          this.passwordReq.capital = false;
-        }
-
-        // Contains Number 
-        if (value.match(/[^0-9]/)) {
-          this.passwordReq.num = true;
-        }
 
         // Reset if length is 0
         if (value.length === 0) {
@@ -113,8 +95,24 @@ export class RegisterComponent implements OnInit {
           this.passwordReq.capital = false;
           this.passwordReq.num = false;
           this.passwordReq.specialChar = false;
+
+        } else {
+          // Min length six
+          this.passwordReq.minLength = (value.length >= 6);
+
+          // Contains Capital
+          const capitalRegex = RegExp('[A-Z]');
+          this.passwordReq.capital = capitalRegex.test(value);
+
+          // Contains Number
+          const numRegex = RegExp('[0-9]');
+          this.passwordReq.num = numRegex.test(value);
+
+          // Contains Special Chars
+          const specialRegex = RegExp('[$#.%&*@!+-?]');
+          this.passwordReq.specialChar = specialRegex.test(value);
         }
-        
+
       });
   }
 
