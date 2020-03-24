@@ -4,10 +4,18 @@ export interface User {
   firstName?: string;
   lastName?: string;
   dateOfBirth?: Date;
+  phone?: string;
   isMobile?: boolean;
   isMobileVerified?: boolean; 
-  permission?: Permission
+  role?: string;
+  address1?: string;
+  address2?: string;
+  state?: string;
+  city?: string;
+  postalCode?: string;
+  country?: string;
   createdAt?: string; 
+  updatedAt?: string;
   jwt?: string;
   status: boolean;
   message: string;

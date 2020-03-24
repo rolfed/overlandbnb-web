@@ -1,5 +1,16 @@
+<div class="row mb-3">
+  <div class="col-4">
+    <input
+      type="text"
+      placeholder="Search"
+      id="search"
+      (keyup)="updateFilter($event)"
+      />
+  </div>
+</div>
+
 <ngx-datatable 
-  class="material"
+  class="material fadeIn animated"
   [headerHeight]="50"
   [footerHeight]="50"
   [rows]="rows"

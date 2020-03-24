@@ -1,4 +1,4 @@
-<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative fadeIn animated">
   <div class="col p-4 d-flex flex-column position-static">
 
     <h2 class="mb-1 mb-1 text-primary">
@@ -11,14 +11,18 @@
     </p>
 
     <p class="d-inline-block mb-2 text-primary">
-      <span class="text-muted">Permission: </span> 
-      {{user.permission}}
+      <span class="text-muted">Role: </span> 
+      {{user.role}}
     </p>
 
     <p class="card-text mb-1">
-      <span class="text-muted">Created At: </span> 
+      <span class="text-muted">Joined in </span> 
       {{user.createdAt | date}}
     </p>
+    <small class="card-text mb-1" *ngIf="user.updateAt">
+      <span class="text-muted">Last Update</span> 
+      {{user.updateAt | date}}
+    </small>
 
     <p class="card-text mb-3">
       <span class="text-muted"> Date of Birth:</span> 
@@ -33,17 +37,20 @@
     </p>
 
     <!-- Phone -->
-    <p class="text-muted mb-1"><i class="fa fa-phone fa-fw" aria-hidden="true"></i> (209) 915-2208 
-    <i class="fa fa-certificate fa-fw text-success" aria-hidden="true"></i> Verified</p> 
-
-    <p class="text-muted mb-3">
-    <i class="fa fa-phone fa-fw" aria-hidden="true"></i> (209) 915-2208 
-    </p>
+    <p class="card-text mb-1">
+    <span class="text-muted"><i class="fa fa-phone fa-fw" aria-hidden="true"></i> Phone: </span> 
+      <span *ngIf="user.isMobileVerified">{{user.phone}}<i class="fa fa-certificate fa-fw text-success" aria-hidden="true"></i>Verified</span>
+    <p>
 
     <!-- Address -->
     <p class="text-muted mb-1"><i class="fa fa-address-card-o fa-fw" aria-hidden="true"></i> Address</p>
-    <p class="card-text mb-1">223 NE 56th Ave</p>
-    <p class="card-text mb-auto">Hillsboro, OR 97124</p>
+    <p *ngIf="!!user.address1" class="card-text mb-1">{{user.address1}}</p>
+    <p *ngIf="!!user.address2" class="card-text mb-1">{{user.address2}}</p>
+    <p  class="card-text mb-auto">
+      <span *ngIf="user.city">{{user.city}}</span>
+      <span *ngIf="user.state">, {{user.state}}</span> 
+      <span *ngIf="user.postalCode">{{user.postalCode}}</span>
+    </p>
 
     <!-- EDIT -->
     <button (click)="editUser()" 

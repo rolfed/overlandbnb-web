@@ -1,1 +1,224 @@
-<p>user-edit works!</p>
+<div class="col col-xs-12 offset-md-2 col-md-8 fadeIn animated">
+
+  <form [formGroup]="userEditFG">
+    <div class="form-group row">
+
+      <!-- First Name -->
+      <div class="mt-3 col col-xs-12 col-sm-12 col-md-6">
+        <label for="firstName">First Name</label>
+        <input type="test"
+               id="firstName"
+               [ngClass]='{ "is-valid":firstNameFC.valid, 
+                                      "is-invalid": firstNameFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="first name"
+               [formControl]="firstNameFC"
+               placeholder="First Name">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : firstNameFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="mt-3 col col-xs-12 col-sm-12 col-md-6">
+        <label for="lastName">Last Name</label>
+        <input type="test"
+               id="lastName"
+               [ngClass]='{ "is-valid":lastNameFC.valid, 
+                                      "is-invalid": lastNameFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="last name"
+               [formControl]="lastNameFC"
+               placeholder="Last Name">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : lastNameFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+
+      <!-- Birthdate -->
+      <div class="mt-3 col-xs-12 col-12 col-md-12">
+        <label for="birthDate">Birthdate</label>
+        <input type="text"
+               id="birthDate"
+               formControlName="dateOfBirth"
+               placeholder="Birthdate"
+               class="form-control"
+               [ngClass]='{ "is-valid": dateOfBirthFC.valid, 
+                                      "is-invalid": dateOfBirthFC.invalid && isSubmitted }'
+               [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
+               bsDatepicker>
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : dateOfBirthFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mt-3 col-12">
+        <label for="email" type="email">Email</label>
+        <input type="email"
+               id="email"
+               [ngClass]='{ "is-valid": emailFC.valid, 
+                                      "is-invalid": emailFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="email"
+               [formControl]="emailFC"
+               placeholder="email">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeIn' : emailFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Phone -->
+      <div class="mt-3 col-12">
+        <label for="phoneNumber">phone Number</label>
+        <input type="text"
+               id="phoneNumber"
+               [ngClass]="{ 'is-valid':phoneFC.valid, 
+                            'is-invalid': phoneFC.invalid && isSubmitted }"
+               class="form-control"
+               aria-describedby="phone number"
+               [formControl]="phoneFC"
+               placeholder="phone"
+               required>
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Address 1 -->
+      <div class="mt-3 col-12">
+        <label for="address1">Address</label>
+        <input text="text"
+               id="address1"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="address"
+               [formControl]="address1FC"
+               placeholder="Address">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Address 2 -->
+      <div class="mt-3 col-12">
+        <label for="address2">Address</label>
+        <input text="text"
+               id="address2"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="address"
+               [formControl]="address2FC"
+               placeholder="Address">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- City -->
+      <div class="mt-3 col-5">
+        <label for="city">City</label>
+        <input text="text"
+               id="city"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="address"
+               [formControl]="cityFC"
+               placeholder="City">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+      
+      <!-- State -->
+      <div class="mt-3 col-3">
+        <label for="state">State</label>
+        <input text="text"
+               id="state"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="city"
+               [formControl]="stateFC"
+               placeholder="State">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+      
+      <!-- PostalCode -->
+      <div class="mt-3 col-4">
+        <label for="zip">Zip</label>
+        <input text="text"
+               id="zip"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="city"
+               [formControl]="zipFC"
+               placeholder="zip">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+      <!-- Country -->
+      <div class="mt-3 col-12">
+        <label for="country">Country</label>
+        <input text="text"
+               id="country"
+               [ngClass]='{ "is-valid":phoneFC.valid, 
+                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               class="form-control"
+               aria-describedby="city"
+               [formControl]="countryFC"
+               placeholder="country">
+        <div class="invalid-feedback animated" 
+             [ngClass]="{'fadeOut' : phoneFC.valid,
+                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+          Please fill out.
+        </div>
+      </div>
+
+
+      <div class="mt-3 col-12">
+        <button
+          type="submit"
+          class="btn btn-outline-primary mr-1"
+          (click)="onSubmit()">
+          Save
+        </button>
+        <a [routerLink]='["/admin"]'
+          class="btn btn-outline-secondary">
+          Cancel
+        </a>
+      </div>
+
+    </div>
+  </form>
+
+  <!-- form submitted -->
+  <div *ngIf="isSubmitted && registrationFG.valid">
+    processing...
+  </div>
+</div>

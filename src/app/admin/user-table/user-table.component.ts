@@ -16,6 +16,7 @@ export class UserTableComponent implements OnInit {
   public columns = [];
   public rows = [];
   public selected = [];
+  public temp = [];
 
   constructor(
     private router: Router,
@@ -43,6 +44,15 @@ export class UserTableComponent implements OnInit {
   public onActivate(event) {
     console.log('Activated Event ', event);
   }
+
+  public updateSearch(event) {
+    const val = event.target.value.toLowerCase();
+    
+    // filter our data
+    const temp = this.temp.filter(function(d) {
+
+    });
+  }
   
   /**
    * Generate column labels from account object
@@ -68,10 +78,18 @@ export class UserTableComponent implements OnInit {
         firstName: account.firstName,
         lastName: account.lastName,
         dateOfBirth: account.dateOfBirth,
+        phone: account.phone,
         isMobile: account.isMobile,
         isMobileVerified: account.isMobileVerified,
-        permission: account.permission,
-        createdAt: account.createdAt
+        role: account.role,
+        address1: account.address1,
+        adress2: account.address2,
+        city: account.city,
+        state: account.state,
+        postalCode: account.postalCode,
+        country: account.country,
+        createdAt: account.createdAt,
+        updatedAt: account.updatedAt
       };
       this.rows.push(value);
     });
