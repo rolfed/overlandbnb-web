@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http"; 
 import { Observable } from "rxjs/internal/Observable";
 import { User, AccountsResponse } from "../model/user";
 import { environment } from "../../../environments/environment";
@@ -25,6 +25,12 @@ export class UserService {
   }
 
   public getUserById(userId: string): Observable<User> {
-    const id = parseInt(userId)
-    return this.http.get<User>(`${environment.account}/${id}`) }
+    const id = parseInt(userId);
+    return this.http.get<User>(`${environment.account}/${id}`) 
+  }
+
+  public updateUserById(user: User): Observable<User> {
+    // const id = parseInt(user.userId);
+    return this.http.patch<User>(`${environment.account}/${user.userId}`, user)
+  }
 }

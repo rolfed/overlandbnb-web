@@ -115,17 +115,10 @@
         <label for="address2">Address</label>
         <input text="text"
                id="address2"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
-                            "is-invalid": phoneFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="address"
                [formControl]="address2FC"
                placeholder="Address">
-        <div class="invalid-feedback animated" 
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- City -->
@@ -168,16 +161,16 @@
       <div class="mt-3 col-4">
         <label for="zip">Zip</label>
         <input text="text"
-               id="zip"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
-                            "is-invalid": phoneFC.invalid && isSubmitted }'
+               id="postalCode"
+               [ngClass]='{ "is-valid":postalCodeFC.valid, 
+                            "is-invalid": postalCodeFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="city"
-               [formControl]="zipFC"
+               [formControl]="postalCodeFC"
                placeholder="zip">
         <div class="invalid-feedback animated" 
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+             [ngClass]="{'fadeOut' : postalCodeFC.valid,
+                         'fadeIn' : postalCodeFC.invalid && isSubmitted}">
           Please fill out.
         </div>
       </div>

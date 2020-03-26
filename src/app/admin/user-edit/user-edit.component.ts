@@ -20,10 +20,10 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     if (!!this.userService.user) {
       this.user = this.userService.user[0];
+      console.log('EDIT USER -- USER: ', this.user);
       this.userEditFG.patchValue(this.user);
-      console.log('USER DATA: ', this.user);
     } else {
-      console.log('FAIL');
+      this.router.navigate(['/admin']).then(v => v);
     }
   }
 
@@ -45,8 +45,7 @@ export class UserEditComponent implements OnInit {
   public address1FC: FormControl = new FormControl(
     '', [Validators.required]);
 
-  public address2FC: FormControl = new FormControl(
-    '', [Validators.required]);
+  public address2FC: FormControl = new FormControl('', []);
 
   public cityFC: FormControl = new FormControl(
     '', [Validators.required]);
@@ -60,6 +59,9 @@ export class UserEditComponent implements OnInit {
   public countryFC: FormControl = new FormControl(
     '', [Validators.required]);
 
+  public updateAt: FormControl = new FormControl(
+    new Date().toISOString(), []);
+
   public userEditFG: FormGroup = new FormGroup({
     email: this.emailFC,
     firstName: this.firstNameFC,
@@ -71,10 +73,18 @@ export class UserEditComponent implements OnInit {
     city: this.cityFC,
     state: this.stateFC,
     postalCode: this.postalCodeFC,
-    country: this.countryFC 
+    country: this.countryFC, 
+    updateAt: this.updateAt 
   });
 
   public onSubmit() {
-    console.log('SUBMIT FORM', this.userEditFG.value);
+    if (this.userEditFG.valid) {
+      this.userService.updateUserById(this.user).subscribe(
+        response => {
+        }, err => {
+          console.error('ERROR: ', error);
+        }
+      )
+    }
   }
 }
