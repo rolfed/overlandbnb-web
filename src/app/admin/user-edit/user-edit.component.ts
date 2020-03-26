@@ -81,8 +81,9 @@ export class UserEditComponent implements OnInit {
     if (this.userEditFG.valid) {
       this.userService.updateUserById(this.user).subscribe(
         response => {
+          console.log('RESPONSE: ', response);
         }, err => {
-          console.error('ERROR: ', error);
+          console.error('ERROR: ', err);
         }
       )
     }
