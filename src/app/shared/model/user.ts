@@ -1,12 +1,12 @@
 export interface User {
-  userId?: number; 
-  email?: string; 
+  userId?: number;
+  email?: string;
   firstName?: string;
   lastName?: string;
   dateOfBirth?: Date;
   phone?: string;
   isMobile?: boolean;
-  isMobileVerified?: boolean; 
+  isMobileVerified?: boolean;
   role?: string;
   address1?: string;
   address2?: string;
@@ -14,7 +14,7 @@ export interface User {
   city?: string;
   postalCode?: string;
   country?: string;
-  createdAt?: string; 
+  createdAt?: string;
   updatedAt?: string;
   jwt?: string;
   status: boolean;
@@ -27,7 +27,7 @@ export interface Status {
 }
 
 export interface AccountResponse extends Status {
-  account: User
+  account: User;
 }
 
 export interface AccountsResponse {
@@ -58,7 +58,7 @@ export interface UserResponse extends Status {
 }
 
 export enum Permission {
-  USER = "USER",
-  HOST = "HOST",
-  ADMIN = "ADMIN"
+  USER = 'USER',
+  HOST = 'HOST',
+  ADMIN = 'ADMIN'
 }
