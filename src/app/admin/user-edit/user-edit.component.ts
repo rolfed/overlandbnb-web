@@ -55,7 +55,6 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     if (!!this.userService.user) {
       this.user = this.userService.user[0];
-      console.log('USER USER USRE: ', this.user);
       this.userEditFG.patchValue(this.user);
       this.userIdFC.setValue(this.user.userId);
     } else {
@@ -66,7 +65,6 @@ export class UserEditComponent implements OnInit {
   public onSubmit() {
     this.isSubmitted = true;
     if (this.userEditFG.valid) {
-      console.log('SUBMIT: ', this.userEditFG.value);
       this.userService.updateUserById(this.userEditFG.value).subscribe(
         response => {
           // Convert date of birth value to UTC
