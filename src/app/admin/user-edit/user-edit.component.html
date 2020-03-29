@@ -79,7 +79,7 @@
         <input type="text"
                id="phoneNumber"
                [ngClass]="{ 'is-valid':isSubmitted && phoneFC.valid, 
-                            'is-invalid':isSubmitted && phoneFC.invalid}"
+                             'is-invalid':isSubmitted && phoneFC.invalid}"
                class="form-control"
                aria-describedby="phone number"
                [formControl]="phoneFC"
@@ -87,30 +87,34 @@
                required>
         <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
+                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
+        </div>
       </div>
 
-      <div class="mt-3 col-12 d-flex">
       <!-- Is Mobile -->
+      <div class="mt-3 col-12 d-flex">
         <div class="custom-control custom-checkbox">
           <input type="checkbox"
+                 [formControl]="isMobileFC"
                  id="isMobile"
+                 aria-describedby="is phone number mobile"
+                 placeholder="phone"
                  class="custom-control-input"
                  [ngClass]="{ 'is-valid':isSubmitted && isMobileFC.valid, 
-                               'is-invalid':isSubmitted && isMobileFC.invalid}"
-                 aria-describedby="is phone number mobile"
-                 [formControl]="isMobileFC"
-                 placeholder="phone"
+                                'is-invalid':isSubmitted && isMobileFC.invalid}"
                  required>
           <label for="isMobile" class="custom-control-label">Is Mobile?</label>
         </div>
-      <!-- Is Verified -->
-      <p class="ml-4" *ngIf="user.isMobileVerified">
-        <i class="fa fa-certificate fa-fw text-success"></i> Mobile is verified</p>
-      <p class="ml-4" *ngIf="!user.isMobileVerified">
-        <i class="fa fa-certificate fa-fw text-danger"></i> 
-        Mobile is not verified</p>
+
+        <!-- Is Mobile -->
+        <p class="ml-4" *ngIf="user.isMobileVerified">
+          <i class="fa fa-certificate fa-fw text-success"></i> Mobile is verified
+        </p>
+
+        <p class="ml-4" *ngIf="!user.isMobileVerified">
+          <i class="fa fa-certificate fa-fw text-danger"></i> Mobile is not verified
+        </p>
       </div>
 
       <!-- Address 1 -->
@@ -235,4 +239,5 @@
   <div *ngIf="isSubmitted && userEditFG.valid">
     processing...
   </div>
+
 </div>

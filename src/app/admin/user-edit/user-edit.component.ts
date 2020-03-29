@@ -15,7 +15,7 @@ export class UserEditComponent implements OnInit {
   public user: User;
   public isSubmitted: boolean;
 
-  public userIdFC: FormControl = new FormControl(this.user.userId, []);
+  public userIdFC: FormControl = new FormControl((this.user && this.user.userId ? this.user.userId : ''), []);
   public emailFC: FormControl = new FormControl('', [Validators.required]);
   public firstNameFC: FormControl = new FormControl('', [Validators.required]);
   public lastNameFC: FormControl = new FormControl('', [Validators.required]);
@@ -28,6 +28,7 @@ export class UserEditComponent implements OnInit {
   public postalCodeFC: FormControl = new FormControl('', [Validators.required]);
   public countryFC: FormControl = new FormControl('', [Validators.required]);
   public updateAt: FormControl = new FormControl(new Date().toISOString(), []);
+  public isMobileFC: FormControl = new FormControl('', []);
 
   public userEditFG: FormGroup = new FormGroup({
     userId: this.userIdFC, 
@@ -69,9 +70,9 @@ export class UserEditComponent implements OnInit {
           // Convert date of birth value to UTC
           const utcDate = this.dateOfBirthFC.value.toISOString();
           this.userEditFG.get('dateOfBirth').setValue(utcDate);
-          console.log('RESPONSE: ', response);
           this.router.navigate(['/admin']);
 
+          console.log('RESPONSE: ', response);
         },
         err => {
           this.isSubmitted = false;
