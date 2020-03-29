@@ -1,13 +1,9 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AuthenticationService } from './authentication.service';
-import { HttpClientModule } from '@angular/common/http';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { CreateUserRequest, UserResponse, AccountResponse } from '../model/user';
+import { HttpClient } from '@angular/common/http';
+import { CreateUserRequest, UserResponse } from '../model/user';
 import { defer, Observable, throwError } from 'rxjs';
-import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
+
 
 /** Create async observable that emits-once and completes
  *  after a JS engine turn
@@ -24,12 +20,7 @@ export function asyncError<T>(errorObject: any): Observable<any> {
 }
 
 describe('AuthenticationService', () => {
-  let httpClientSpy: {
-    get: jasmine.Spy,
-    post: jasmine.Spy,
-    put: jasmine.Spy,
-    delete: jasmine.Spy
-  };
+  let httpClientSpy: jasmine.SpyObj<HttpClient>;
   let authService: AuthenticationService;
   let mockRouter: jasmine.SpyObj<Router>;
 
@@ -37,25 +28,9 @@ describe('AuthenticationService', () => {
     mockRouter = jasmine.createSpyObj('Router', ['']);
   });
 
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [
-      HttpClientModule,
-      HttpClientTestingModule
-    ],
-    providers: [
-      ReactiveFormsModule,
-      RouterTestingModule
-    ]
-  }));
-
   beforeEach(() => {
     httpClientSpy = jasmine.createSpyObj('HttpClient', ['get', 'post', 'put', 'delete']);
-    authService = new AuthenticationService(httpClientSpy as any, mockRouter);
-  });
-
-  it('should be created', () => {
-    const service: AuthenticationService = TestBed.get(AuthenticationService);
-    expect(service).toBeTruthy();
+    authService = new AuthenticationService(httpClientSpy, mockRouter);
   });
 
   describe('Login() ===>', () => {
