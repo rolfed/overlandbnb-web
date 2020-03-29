@@ -15,6 +15,7 @@ export class UserEditComponent implements OnInit {
   public user: User;
   public isSubmitted: boolean;
 
+  public userIdFC: FormControl = new FormControl(this.user.userId, []);
   public emailFC: FormControl = new FormControl('', [Validators.required]);
   public firstNameFC: FormControl = new FormControl('', [Validators.required]);
   public lastNameFC: FormControl = new FormControl('', [Validators.required]);
@@ -29,6 +30,7 @@ export class UserEditComponent implements OnInit {
   public updateAt: FormControl = new FormControl(new Date().toISOString(), []);
 
   public userEditFG: FormGroup = new FormGroup({
+    userId: this.userIdFC, 
     email: this.emailFC,
     firstName: this.firstNameFC,
     lastName: this.lastNameFC,
@@ -51,24 +53,32 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     if (!!this.userService.user) {
       this.user = this.userService.user[0];
-      console.log('EDIT USER -- USER: ', this.user);
       this.userEditFG.patchValue(this.user);
+      this.userIdFC.setValue(this.user.userId);
     } else {
       this.router.navigate(['/admin']).then(v => v);
     }
   }
 
-
   public onSubmit() {
+      console.log('SUBMIT: ', this.userEditFG.value);
+    this.isSubmitted = true;
     if (this.userEditFG.valid) {
-      this.isSubmitted = true;
       this.userService.updateUserById(this.user).subscribe(
         response => {
+          // Convert date of birth value to UTC
+          const utcDate = this.dateOfBirthFC.value.toISOString();
+          this.userEditFG.get('dateOfBirth').setValue(utcDate);
           console.log('RESPONSE: ', response);
-        }, err => {
-          console.error('ERROR: ', err);
-        }
-      );
+          this.router.navigate(['/admin']);
+
+        },
+        err => {
+          this.isSubmitted = false;
+          console.error('ERROR: ', err.message);
+        });
     }
   }
+
+
 }
