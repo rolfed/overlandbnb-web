@@ -10,9 +10,9 @@
     "e2e": "ng e2e",
     "start:docker": "ng s -c docker",
     "start:stage": "ng s -c stage",
-    "test:coverage": "npm run test --browsers=Chrome-Headless --code-coverage",
+    "test:coverage": "npm run test --browsers=ChromeHeadless --code-coverage",
     "build:ci": "npm run test && ng lint && npm run build --prod",
-    "test:ci": "npm run test --watch=false --browsers=Chrome-Headless --code-coverage"
+    "test:ci": "npm run test --watch=false --browsers=ChromeHeadless --code-coverage"
   },
   "private": true,
   "dependencies": {
