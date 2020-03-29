@@ -14,10 +14,6 @@
                aria-describedby="first name"
                [formControl]="firstNameFC"
                placeholder="First Name">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeIn' : firstNameFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- Last Name -->
@@ -31,10 +27,6 @@
                aria-describedby="last name"
                [formControl]="lastNameFC"
                placeholder="Last Name">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeIn' : lastNameFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
 
@@ -50,10 +42,6 @@
                                       "is-invalid": isSubmitted && dateOfBirthFC.invalid}'
                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
                bsDatepicker>
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeIn' : dateOfBirthFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- Email -->
@@ -67,10 +55,6 @@
                aria-describedby="email"
                [formControl]="emailFC"
                placeholder="email">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeIn' : emailFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- Phone -->
@@ -83,13 +67,7 @@
                class="form-control"
                aria-describedby="phone number"
                [formControl]="phoneFC"
-               placeholder="phone"
-               required>
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                          'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
+               placeholder="phone">
       </div>
 
       <!-- Is Mobile -->
@@ -102,8 +80,7 @@
                  placeholder="phone"
                  class="custom-control-input"
                  [ngClass]="{ 'is-valid':isSubmitted && isMobileFC.valid, 
-                                'is-invalid':isSubmitted && isMobileFC.invalid}"
-                 required>
+                                'is-invalid':isSubmitted && isMobileFC.invalid}">
           <label for="isMobile" class="custom-control-label">Is Mobile?</label>
         </div>
 
@@ -128,11 +105,6 @@
                aria-describedby="address"
                [formControl]="address1FC"
                placeholder="Address">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- Address 2 -->
@@ -157,11 +129,6 @@
                aria-describedby="address"
                [formControl]="cityFC"
                placeholder="City">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- State -->
@@ -175,11 +142,6 @@
                aria-describedby="city"
                [formControl]="stateFC"
                placeholder="State">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
       <!-- PostalCode -->
@@ -211,11 +173,6 @@
                aria-describedby="city"
                [formControl]="countryFC"
                placeholder="country">
-        <div class="invalid-feedback animated"
-             [ngClass]="{'fadeOut' : phoneFC.valid,
-                         'fadeIn' : phoneFC.invalid && isSubmitted}">
-          Please fill out.
-        </div>
       </div>
 
 

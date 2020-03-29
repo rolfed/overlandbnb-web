@@ -27,8 +27,8 @@ export class UserTableComponent implements OnInit {
   ngOnInit() {
     console.log('Acccounts: ', this.userData);
     if (!!this.userData) {
-      this.generateColumns(this.userData);
-      this.generateRows(this.userData);
+      this._generateColumns(this.userData);
+      this._generateRows(this.userData);
     }
   }
 
@@ -56,7 +56,7 @@ export class UserTableComponent implements OnInit {
   /**
    * Generate column labels from account object
    */
-  private generateColumns(userData: AccountsResponse) {
+  private _generateColumns(userData: AccountsResponse) {
     Object.keys(userData.accounts[0]).map(
       key => {
         const label = {name: key};
@@ -67,30 +67,11 @@ export class UserTableComponent implements OnInit {
 
 
   /**
-   * Generate row labels from account object
+   * Populate rows with data 
    */
-  private generateRows(userData: AccountsResponse) {
+  private _generateRows(userData: AccountsResponse) {
     userData.accounts.map(account => {
-      const value = {
-        userId: account.userId,
-        email: account.email,
-        firstName: account.firstName,
-        lastName: account.lastName,
-        dateOfBirth: account.dateOfBirth,
-        phone: account.phone,
-        isMobile: account.isMobile,
-        isMobileVerified: account.isMobileVerified,
-        role: account.role,
-        address1: account.address1,
-        adress2: account.address2,
-        city: account.city,
-        state: account.state,
-        postalCode: account.postalCode,
-        country: account.country,
-        createdAt: account.createdAt,
-        updatedAt: account.updatedAt
-      };
-      this.rows.push(value);
+      this.rows.push(account);
     });
   }
 

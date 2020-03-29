@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
 import { User, AccountsResponse } from '../model/user';
 import { environment } from '../../../environments/environment';
+import { map } from "rxjs/internal/operators/map";
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,12 @@ export class UserService {
   }
 
   public getAll(): Observable<AccountsResponse> {
-    return this.http.get<AccountsResponse>(`${environment.account}`);
+    return this.http.get<AccountsResponse>(`${environment.account}`).pipe(
+      map(users => {
+        console.log('USERS: ', users)
+        return users;
+      })
+    );
   }
 
   public getUserById(userId: string): Observable<User> {

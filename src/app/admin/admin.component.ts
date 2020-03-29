@@ -41,7 +41,7 @@ export class AdminComponent implements OnInit {
     this.userService.getAll().subscribe(
       users => {
         if (!!users && users.accounts) {
-          console.log('USERS: ', users);
+          console.log('ADMIN PANEL USERS: ', users);
           this.users = users;
         }
       },
