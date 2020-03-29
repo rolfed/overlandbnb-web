@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UserService } from '../../shared/service/user.service';
 import { Router } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { UserService } from '../../shared/service/user.service';
 import { User } from '../../shared/model/user';
 
 
@@ -45,7 +46,7 @@ export class UserEditComponent implements OnInit {
   constructor(
     private userService: UserService,
     private router: Router
-    ) {}
+  ) {}
 
   ngOnInit() {
     if (!!this.userService.user) {
