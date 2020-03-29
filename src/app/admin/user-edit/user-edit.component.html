@@ -8,13 +8,13 @@
         <label for="firstName">First Name</label>
         <input type="test"
                id="firstName"
-               [ngClass]='{ "is-valid":firstNameFC.valid, 
-                                      "is-invalid": firstNameFC.invalid && isSubmitted }'
+               [ngClass]='{ "is-valid":firstNameFC.valid,
+                            "is-invalid": firstNameFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="first name"
                [formControl]="firstNameFC"
                placeholder="First Name">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeIn' : firstNameFC.invalid && isSubmitted}">
           Please fill out.
         </div>
@@ -25,13 +25,13 @@
         <label for="lastName">Last Name</label>
         <input type="test"
                id="lastName"
-               [ngClass]='{ "is-valid":lastNameFC.valid, 
-                                      "is-invalid": lastNameFC.invalid && isSubmitted }'
+               [ngClass]='{ "is-valid":lastNameFC.valid,
+                            "is-invalid": lastNameFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="last name"
                [formControl]="lastNameFC"
                placeholder="Last Name">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeIn' : lastNameFC.invalid && isSubmitted}">
           Please fill out.
         </div>
@@ -46,11 +46,11 @@
                formControlName="dateOfBirth"
                placeholder="Birthdate"
                class="form-control"
-               [ngClass]='{ "is-valid": dateOfBirthFC.valid, 
-                                      "is-invalid": dateOfBirthFC.invalid && isSubmitted }'
+               [ngClass]='{ "is-valid": dateOfBirthFC.valid,
+                            "is-invalid": dateOfBirthFC.invalid && isSubmitted }'
                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
                bsDatepicker>
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeIn' : dateOfBirthFC.invalid && isSubmitted}">
           Please fill out.
         </div>
@@ -61,13 +61,13 @@
         <label for="email" type="email">Email</label>
         <input type="email"
                id="email"
-               [ngClass]='{ "is-valid": emailFC.valid, 
-                                      "is-invalid": emailFC.invalid && isSubmitted }'
+               [ngClass]='{ "is-valid": emailFC.valid,
+                            "is-invalid": emailFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="email"
                [formControl]="emailFC"
                placeholder="email">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeIn' : emailFC.invalid && isSubmitted}">
           Please fill out.
         </div>
@@ -78,14 +78,14 @@
         <label for="phoneNumber">phone Number</label>
         <input type="text"
                id="phoneNumber"
-               [ngClass]="{ 'is-valid':phoneFC.valid, 
+               [ngClass]="{ 'is-valid':phoneFC.valid,
                             'is-invalid': phoneFC.invalid && isSubmitted }"
                class="form-control"
                aria-describedby="phone number"
                [formControl]="phoneFC"
                placeholder="phone"
                required>
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
@@ -97,13 +97,13 @@
         <label for="address1">Address</label>
         <input text="text"
                id="address1"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
+               [ngClass]='{ "is-valid":phoneFC.valid,
                             "is-invalid": phoneFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="address"
                [formControl]="address1FC"
                placeholder="Address">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
@@ -126,49 +126,49 @@
         <label for="city">City</label>
         <input text="text"
                id="city"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
+               [ngClass]='{ "is-valid":phoneFC.valid,
                             "is-invalid": phoneFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="address"
                [formControl]="cityFC"
                placeholder="City">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
         </div>
       </div>
-      
+
       <!-- State -->
       <div class="mt-3 col-3">
         <label for="state">State</label>
         <input text="text"
                id="state"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
+               [ngClass]='{ "is-valid":phoneFC.valid,
                             "is-invalid": phoneFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="city"
                [formControl]="stateFC"
                placeholder="State">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
         </div>
       </div>
-      
+
       <!-- PostalCode -->
       <div class="mt-3 col-4">
         <label for="zip">Zip</label>
         <input text="text"
                id="postalCode"
-               [ngClass]='{ "is-valid":postalCodeFC.valid, 
+               [ngClass]='{ "is-valid":postalCodeFC.valid,
                             "is-invalid": postalCodeFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="city"
                [formControl]="postalCodeFC"
                placeholder="zip">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : postalCodeFC.valid,
                          'fadeIn' : postalCodeFC.invalid && isSubmitted}">
           Please fill out.
@@ -180,13 +180,13 @@
         <label for="country">Country</label>
         <input text="text"
                id="country"
-               [ngClass]='{ "is-valid":phoneFC.valid, 
+               [ngClass]='{ "is-valid":phoneFC.valid,
                             "is-invalid": phoneFC.invalid && isSubmitted }'
                class="form-control"
                aria-describedby="city"
                [formControl]="countryFC"
                placeholder="country">
-        <div class="invalid-feedback animated" 
+        <div class="invalid-feedback animated"
              [ngClass]="{'fadeOut' : phoneFC.valid,
                          'fadeIn' : phoneFC.invalid && isSubmitted}">
           Please fill out.
@@ -211,7 +211,7 @@
   </form>
 
   <!-- form submitted -->
-  <div *ngIf="isSubmitted && registrationFG.valid">
+  <div *ngIf="isSubmitted && userEditFG.valid">
     processing...
   </div>
 </div>

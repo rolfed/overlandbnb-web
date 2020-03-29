@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { of, timer } from 'rxjs';
-import { debounce } from 'rxjs/operators';
 import { AuthenticationService } from '../shared/service/authentication.service';
 
 export enum PasswordStrength {
-  week = "week",
-  medium = "medium",
-  strong = "strong"
+  week = 'week',
+  medium = 'medium',
+  strong = 'strong'
 }
 
 export interface PasswordRequirement {
@@ -36,7 +34,7 @@ export class RegisterComponent implements OnInit {
 
   public firstNameFC: FormControl = new FormControl('', [
     Validators.required,
-    Validators.pattern("^[a-zA-Z\s]*$")
+    Validators.pattern('^[a-zA-Z\s]*$')
   ]);
   public lastNameFC: FormControl = new FormControl('', [
     Validators.required
@@ -51,7 +49,7 @@ export class RegisterComponent implements OnInit {
   public mobileFC: FormControl = new FormControl('', [
     Validators.required,
     // TODO add phone pattern
-    // Validators.pattern("/^[0-9]\d*$/")
+    // Validators.pattern('/^[0-9]\d*$/')
   ]);
   public termsFC: FormControl = new FormControl('', [
     Validators.required
@@ -86,7 +84,7 @@ export class RegisterComponent implements OnInit {
   public validatePasswordStrenth(): void {
     this.passwordFC.valueChanges.subscribe(
       value => {
-        console.log('VALUE: ', value)
+        console.log('VALUE: ', value);
 
         // Reset if length is 0
         if (value.length === 0) {

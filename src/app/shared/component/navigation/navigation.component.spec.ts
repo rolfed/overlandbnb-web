@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { AuthenticationService } from '../../service/authentication.service';
 import { of, throwError } from 'rxjs';
-import { UserResponse } from '../../model/userResponse';
+import { UserResponse, AccountResponse } from '../../model/user';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
@@ -16,11 +16,13 @@ describe('NavigationComponent', () => {
   let fixture: ComponentFixture<NavigationComponent>;
   let stubAuthService: jasmine.SpyObj<AuthenticationService>;
 
-  const mockUserResponse: UserResponse = {
+  const mockUserResponse: AccountResponse = {
     account: {
       email: 'hello@test.com',
-      password: 'abc123!@#',
-      jwt: '1234567890'
+      // password: 'abc123!@#',
+      jwt: '1234567890',
+      status: true,
+      message: ''
     },
     message: 'succes',
     status: true

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { User } from "./shared/model/user";
-import { AuthenticationService } from "./shared/service/authentication.service";
-import { Router } from "@angular/router";
+import { User } from './shared/model/user';
+import { AuthenticationService } from './shared/service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'ovb-root',

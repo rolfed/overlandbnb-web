@@ -1,14 +1,36 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { UserEditComponent } from './user-edit.component';
+import { UserService } from 'src/app/shared/service/user.service';
+
 
 describe('UserEditComponent', () => {
   let component: UserEditComponent;
   let fixture: ComponentFixture<UserEditComponent>;
+  let mockUserService: jasmine.SpyObj<UserService>;
 
   beforeEach(async(() => {
+    mockUserService = jasmine.createSpyObj(
+      'UserService',
+      ['getAll', 'getUserById', 'updateUserById']
+    );
+
     TestBed.configureTestingModule({
-      declarations: [ UserEditComponent ]
+      declarations: [
+        UserEditComponent
+      ],
+      imports: [
+        ReactiveFormsModule,
+        RouterTestingModule,
+        BsDatepickerModule.forRoot()
+      ],
+      providers: [
+        { provide: UserService, useValue: mockUserService }
+      ]
     })
     .compileComponents();
   }));

@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { User, AccountsResponse } from "../../shared/model/user";
+import { AccountsResponse } from '../../shared/model/user';
 import { ColumnMode, SelectionType  } from '@swimlane/ngx-datatable';
-import { Router } from "@angular/router";
-import { UserService } from "../../shared/service/user.service";
+import { Router } from '@angular/router';
+import { UserService } from '../../shared/service/user.service';
+
 
 @Component({
   selector: 'ovb-user-table',
@@ -34,8 +35,8 @@ export class UserTableComponent implements OnInit {
   public onSelect({ selected }) {
     this.userService.user = this.selected as any;
 
-    let userDetail = {
-      queryParams: { 'userId': this.selected[0].userId }
+    const userDetail = {
+      queryParams: { userId: this.selected[0].userId }
     };
 
     this.router.navigate(['/admin/user'], userDetail);
@@ -47,13 +48,11 @@ export class UserTableComponent implements OnInit {
 
   public updateSearch(event) {
     const val = event.target.value.toLowerCase();
-    
-    // filter our data
-    const temp = this.temp.filter(function(d) {
 
-    });
+    // TODO: filter our data
+    // const temp = this.temp.filter((d) => { });
   }
-  
+
   /**
    * Generate column labels from account object
    */
@@ -61,9 +60,9 @@ export class UserTableComponent implements OnInit {
     Object.keys(userData.accounts[0]).map(
       key => {
         const label = {name: key};
-        this.columns.push(label)
+        this.columns.push(label);
       }
-    )
+    );
   }
 
 
