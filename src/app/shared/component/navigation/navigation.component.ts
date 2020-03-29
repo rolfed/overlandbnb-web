@@ -2,8 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 import { AuthenticationService } from '../../service/authentication.service';
-import { User, Status } from '../../model/user';
-import { first } from "rxjs/internal/operators/first";
+import { User } from '../../model/user';
+import { first } from 'rxjs/internal/operators/first';
+
 
 @Component({
   selector: 'ovb-navigation',

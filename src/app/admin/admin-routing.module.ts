@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AdminComponent } from './admin.component';
-import { AuthGuard } from "../shared/guard/auth.guard";
-import { UserProfileComponent } from "./user-profile/user-profile.component";
-import { UserEditComponent } from "./user-edit/user-edit.component";
+import { AuthGuard } from '../shared/guard/auth.guard';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 const routes: Routes = [
   { path: '', component: AdminComponent, canActivate: [AuthGuard] },

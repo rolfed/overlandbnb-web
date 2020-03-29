@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core'
+import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../service/authentication.service';
 import { Observable, throwError } from 'rxjs';
-import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from "@angular/common/http";
-import { catchError } from "rxjs/internal/operators/catchError";
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
+import { catchError } from 'rxjs/internal/operators/catchError';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -18,10 +18,9 @@ export class ErrorInterceptor implements HttpInterceptor {
         if (err.status === this.UNAUTHORIZED_STATUS) {
           // auto logout if 401 response return from api
           this.authService.logout();
-          location.reload(true);
-        } 
+        }
 
-        return throwError(err.err || err.err.message || err.statusText)
-      }))
+        return throwError(err.err || err.err.message || err.statusText);
+      }));
   }
 }
