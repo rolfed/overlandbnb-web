@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from "../../shared/service/user.service";
-import { Router } from "@angular/router";
-import { User } from "../../shared/model/user";
+import { Router } from '@angular/router';
+
+import { UserService } from '../../shared/service/user.service';
+import { User } from '../../shared/model/user';
+
 
 @Component({
   selector: 'ovb-user-profile',
@@ -17,7 +19,7 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    if (!!this.userService.user 
+    if (!!this.userService.user
       && Array.isArray(this.userService.user)
       && !!this.userService.user[0]) {
       this.user = this.userService.user[0];
@@ -27,8 +29,8 @@ export class UserProfileComponent implements OnInit {
   }
 
   public editUser(): void {
-    let userDetail = {
-      queryParams: { 'userId': this.user.userId  },
+    const userDetail = {
+      queryParams: { userId: this.user.userId  },
     };
     this.router.navigate(['/admin/edit'], userDetail).then(v => v);
   }
