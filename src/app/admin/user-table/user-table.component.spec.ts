@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { UserTableComponent } from './user-table.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 describe('UserTableComponent', () => {
   let component: UserTableComponent;
@@ -8,7 +11,12 @@ describe('UserTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UserTableComponent ]
+      declarations: [ UserTableComponent ],
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        NgxDatatableModule
+      ]
     })
     .compileComponents();
   }));
