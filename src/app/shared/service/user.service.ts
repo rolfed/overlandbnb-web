@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from "@angular/common/http"; 
-import { Observable } from "rxjs/internal/Observable";
-import { User, AccountsResponse } from "../model/user";
-import { environment } from "../../../environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs/internal/Observable';
+import { User, AccountsResponse } from '../model/user';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -21,16 +21,16 @@ export class UserService {
   }
 
   public getAll(): Observable<AccountsResponse> {
-    return this.http.get<AccountsResponse>(`${environment.account}`)
+    return this.http.get<AccountsResponse>(`${environment.account}`);
   }
 
   public getUserById(userId: string): Observable<User> {
-    const id = parseInt(userId);
-    return this.http.get<User>(`${environment.account}/${id}`) 
+    const id = parseInt(userId, 10);
+    return this.http.get<User>(`${environment.account}/${id}`);
   }
 
   public updateUserById(user: User): Observable<User> {
     // const id = parseInt(user.userId);
-    return this.http.patch<User>(`${environment.account}/${user.userId}`, user)
+    return this.http.patch<User>(`${environment.account}/${user.userId}`, user);
   }
 }
