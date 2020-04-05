@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { Router } from '@angular/router';
+import { Router, Routes } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
@@ -12,6 +12,10 @@ describe('UserEditComponent', () => {
   let component: UserEditComponent;
   let fixture: ComponentFixture<UserEditComponent>;
   let mockUserService: jasmine.SpyObj<UserService>;
+
+  const testRoutes: Routes = [
+    { path: 'admin', component: UserEditComponent }
+  ];
 
   beforeEach(async(() => {
     mockUserService = jasmine.createSpyObj(
@@ -25,7 +29,7 @@ describe('UserEditComponent', () => {
       ],
       imports: [
         ReactiveFormsModule,
-        RouterTestingModule,
+        RouterTestingModule.withRoutes(testRoutes),
         BsDatepickerModule.forRoot()
       ],
       providers: [
