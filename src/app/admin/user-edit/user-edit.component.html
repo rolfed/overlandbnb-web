@@ -8,7 +8,7 @@
         <label for="firstName">First Name</label>
         <input type="test"
                id="firstName"
-               [ngClass]='{ "is-valid":isSubmitted && firstNameFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && firstNameFC.valid,
                                       "isSubmitted && is-invalid": firstNameFC.invalid}'
                class="form-control"
                aria-describedby="first name"
@@ -21,7 +21,7 @@
         <label for="lastName">Last Name</label>
         <input type="test"
                id="lastName"
-               [ngClass]='{ "is-valid":isSubmitted && lastNameFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && lastNameFC.valid,
                                       "is-invalid": isSubmitted && lastNameFC.invalid}'
                class="form-control"
                aria-describedby="last name"
@@ -38,7 +38,7 @@
                formControlName="dateOfBirth"
                placeholder="Birthdate"
                class="form-control"
-               [ngClass]='{ "is-valid": isSubmitted && dateOfBirthFC.valid, 
+               [ngClass]='{ "is-valid": isSubmitted && dateOfBirthFC.valid,
                                       "is-invalid": isSubmitted && dateOfBirthFC.invalid}'
                [bsConfig]="{ dateInputFormat: 'MM/DD/YYYY' }"
                bsDatepicker>
@@ -49,7 +49,7 @@
         <label for="email" type="email">Email</label>
         <input type="email"
                id="email"
-               [ngClass]='{ "is-valid": isSubmitted && emailFC.valid, 
+               [ngClass]='{ "is-valid": isSubmitted && emailFC.valid,
                                       "is-invalid": isSubmitted && emailFC.invalid}'
                class="form-control"
                aria-describedby="email"
@@ -62,7 +62,7 @@
         <label for="phoneNumber">Phone Number</label>
         <input type="text"
                id="phoneNumber"
-               [ngClass]="{ 'is-valid':isSubmitted && phoneFC.valid, 
+               [ngClass]="{ 'is-valid':isSubmitted && phoneFC.valid,
                              'is-invalid':isSubmitted && phoneFC.invalid}"
                class="form-control"
                aria-describedby="phone number"
@@ -79,17 +79,17 @@
                  aria-describedby="is phone number mobile"
                  placeholder="phone"
                  class="custom-control-input"
-                 [ngClass]="{ 'is-valid':isSubmitted && isMobileFC.valid, 
+                 [ngClass]="{ 'is-valid':isSubmitted && isMobileFC.valid,
                                 'is-invalid':isSubmitted && isMobileFC.invalid}">
           <label for="isMobile" class="custom-control-label">Is Mobile?</label>
         </div>
 
         <!-- Is Mobile -->
-        <p class="ml-4" *ngIf="user.isMobileVerified">
+        <p class="ml-4" *ngIf="user?.isMobileVerified">
           <i class="fa fa-certificate fa-fw text-success"></i> Mobile is verified
         </p>
 
-        <p class="ml-4" *ngIf="!user.isMobileVerified">
+        <p class="ml-4" *ngIf="!user?.isMobileVerified">
           <i class="fa fa-certificate fa-fw text-danger"></i> Mobile is not verified
         </p>
       </div>
@@ -99,7 +99,7 @@
         <label for="address1">Address</label>
         <input text="text"
                id="address1"
-               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid,
                             "is-invalid":isSubmitted && phoneFC.invalid}'
                class="form-control"
                aria-describedby="address"
@@ -123,7 +123,7 @@
         <label for="city">City</label>
         <input text="text"
                id="city"
-               [ngClass]='{ "is-valid": isSubmitted && phoneFC.valid, 
+               [ngClass]='{ "is-valid": isSubmitted && phoneFC.valid,
                             "is-invalid": isSubmitted && phoneFC.invalid }'
                class="form-control"
                aria-describedby="address"
@@ -136,7 +136,7 @@
         <label for="state">State</label>
         <input text="text"
                id="state"
-               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid,
                             "is-invalid":isSubmitted && phoneFC.invalid }'
                class="form-control"
                aria-describedby="city"
@@ -149,7 +149,7 @@
         <label for="zip">Zip</label>
         <input text="text"
                id="postalCode"
-               [ngClass]='{ "is-valid":isSubmitted && postalCodeFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && postalCodeFC.valid,
                             "is-invalid":isSubmitted && postalCodeFC.invalid }'
                class="form-control"
                aria-describedby="city"
@@ -167,7 +167,7 @@
         <label for="country">Country</label>
         <input text="text"
                id="country"
-               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid, 
+               [ngClass]='{ "is-valid":isSubmitted && phoneFC.valid,
                             "is-invalid":isSubmitted && phoneFC.invalid }'
                class="form-control"
                aria-describedby="city"
