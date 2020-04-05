@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/service/authentication.service';
+import { Permission } from '../shared/model/user';
 
 export enum PasswordStrength {
   week = 'week',
@@ -121,8 +122,10 @@ export class RegisterComponent implements OnInit {
     this.isSubmitted = true;
     if (this.registrationFG.valid) {
       console.log('FORM VALUE', JSON.stringify(this.registrationFG.value, null, 2));
+      const formValue = this.registrationFG.value;
+      formValue.role = formValue.registerAsHost ? Permission.HOST : Permission.USER;
 
-      this.authService.create(this.registrationFG.value).subscribe(
+      this.authService.create(formValue).subscribe(
         resp => {
           console.log('RESPONSE: ', resp);
           if (resp.status) {
