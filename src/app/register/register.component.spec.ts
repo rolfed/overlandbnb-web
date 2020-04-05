@@ -29,11 +29,45 @@ describe('RegisterComponent', () => {
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
 
+    spyOn(window.console, 'log').and.callFake(() => {});
+
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('===> validatePasswordStrength()', () => {
+    const cases = [
+      { input: '', expected: { minLength: false, capital: false, num: false, specialChar: false } },
+      { input: 'paSsword123!', expected: { minLength: true, capital: true, num: true, specialChar: true } },
+      { input: '123H!', expected: { minLength: false, capital: true, num: true, specialChar: true } },
+      { input: 'password123!', expected: { minLength: true, capital: false, num: true, specialChar: true } },
+      { input: 'paSsworD...', expected: { minLength: true, capital: true, num: false, specialChar: true } },
+      { input: 'paSsword2', expected: { minLength: true, capital: true, num: true, specialChar: true } }, // TODO: fix this case
+    ];
+
+    cases.forEach(item => {
+      it(`should show minLen:[${item.expected.minLength}], ` +
+         `capital:[${item.expected.capital}], ` +
+         `num:[${item.expected.num}], ` +
+         `specChar:[${item.expected.specialChar}] ` +
+         `when password=[${item.input}]`, () => {
+
+        component.passwordFC.setValue('');
+        fixture.detectChanges();
+        component.passwordFC.setValue(item.input);
+        fixture.detectChanges();
+
+        expect(component.passwordReq).toEqual(item.expected, 'Output is not matching');
+        expect(component.passwordReq.capital).toEqual(item.expected.capital, 'Capitalization Fail');
+        expect(component.passwordReq.minLength).toEqual(item.expected.minLength, 'Min Len Fail');
+        expect(component.passwordReq.num).toEqual(item.expected.num, 'Number Req Fail');
+        expect(component.passwordReq.specialChar).toEqual(item.expected.specialChar, 'Special Char Fail');
+
+      });
+    });
   });
 
   describe('===> togglePasswordField()', () => {
@@ -43,8 +77,8 @@ describe('RegisterComponent', () => {
     });
 
     it('should set the password field type to [password] when current type is [text]', () => {
-      component.togglePasswordField(component.PASSWORD);
-      expect(component.passwordFieldType).toEqual(component.TEXT);
+      component.togglePasswordField(component.TEXT);
+      expect(component.passwordFieldType).toEqual(component.PASSWORD);
     });
   });
 });
