@@ -6,6 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
+
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
   let fixture: ComponentFixture<RegisterComponent>;
@@ -33,5 +34,17 @@ describe('RegisterComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  describe('===> togglePasswordField()', () => {
+    it('should set the password field type to [text] when current type is [password]', () => {
+      component.togglePasswordField(component.PASSWORD);
+      expect(component.passwordFieldType).toEqual(component.TEXT);
+    });
+
+    it('should set the password field type to [password] when current type is [text]', () => {
+      component.togglePasswordField(component.PASSWORD);
+      expect(component.passwordFieldType).toEqual(component.TEXT);
+    });
   });
 });

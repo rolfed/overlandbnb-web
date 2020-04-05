@@ -24,6 +24,9 @@ export interface PasswordRequirement {
 export class RegisterComponent implements OnInit {
   public isSubmitted = false;
   public isRegistrationSuccesful = false;
+  public readonly PASSWORD = 'password';
+  public readonly TEXT = 'text';
+  public passwordFieldType = this.PASSWORD;
   public passwordStrength: string;
   public passwordReq: PasswordRequirement = {
     minLength: false,
@@ -52,13 +55,14 @@ export class RegisterComponent implements OnInit {
     // Validators.pattern('/^[0-9]\d*$/')
   ]);
   public termsFC: FormControl = new FormControl('', [
-    Validators.required
+    Validators.requiredTrue
   ]);
   public passwordFC: FormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(6),
     Validators.pattern(/^(?=.*[\w])(?=.*[\W])[\w\W]{6,}$/)
   ]);
+  public registerAsHostFC: FormControl = new FormControl('', []);
 
   public isFormSubmitted = false;
   public registrationFG: FormGroup = new FormGroup({
@@ -67,14 +71,13 @@ export class RegisterComponent implements OnInit {
     dateOfBirth: this.dateOfBirthFC,
     email: this.emailFC,
     mobile: this.mobileFC,
-    acceptedTerms: this.termsFC,
-    password: this.passwordFC
+    password: this.passwordFC,
+    registerAsHost: this.registerAsHostFC,
+    acceptedTerms: this.termsFC
   });
 
-  constructor(
-    private authService: AuthenticationService,
-    private router: Router
-  ) { }
+  constructor(private authService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
     this.validatePasswordStrenth();
@@ -107,7 +110,7 @@ export class RegisterComponent implements OnInit {
           this.passwordReq.num = numRegex.test(value);
 
           // Contains Special Chars
-          const specialRegex = RegExp('[$#.%&*@!+-?]');
+          const specialRegex = RegExp('[\$\#.\%\&\*\@\!\+\-\?\:]');
           this.passwordReq.specialChar = specialRegex.test(value);
         }
 
@@ -133,4 +136,9 @@ export class RegisterComponent implements OnInit {
         });
     }
   }
+
+  public togglePasswordField(type: string): void {
+    this.passwordFieldType = (type === this.PASSWORD) ? this.TEXT : this.PASSWORD;
+  }
+
 }
