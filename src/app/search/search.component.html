@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="search-container py-4">
-    <form class="form-inline" (submit)="search(searchInput.value)">
+    <form (submit)="search(searchInput.value)">
       <div class="form-group">
-        <div class="input-group">
+        <div class="col col-md-6 input-group">
           <input #searchInput
                class="form-control form-control-lg"
                type="text"
@@ -23,11 +23,17 @@
     <div class="row py-4">
       <div class="col-11"><h3>Search for <span class="badge badge-light">{{ query }}</span></h3></div>
       <div class="col-1">
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="dropdown" dropdown>
+          <button class="btn btn-secondary dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton"
+                  dropdownToggle
+                  aria-haspopup="true"
+                  aria-expanded="false">
             Filter
           </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right"
+               aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Action</a>
             <a class="dropdown-item" href="#">Another action</a>
             <a class="dropdown-item" href="#">Something else here</a>
@@ -36,20 +42,23 @@
       </div>
     </div>
 
-    <div class="card shadow-sm mb-3">
-      <div class="row no-gutters">
-        <div class="col-md-4">
-          <img src="/assets/img/placeholder.gif" alt="Some image here" class="img-thumbnail border-0">
-        </div>
-        <div class="col-md-8">
-          <div class="card-body">
-            <h5 class="card-title">Sample Result Title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+    <div class="row" *ngFor="let item of [1,2,3,4];">
+      <div class="card shadow-sm mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="/assets/img/placeholder.gif" alt="Some image here" class="img-thumbnail border-0">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">Sample Result Title</h5>
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+            </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 
 </div>
