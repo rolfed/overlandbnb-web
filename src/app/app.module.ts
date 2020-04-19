@@ -12,6 +12,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { JwtInterceptor } from './shared/interceptor/jwt-interceptor';
 import { ErrorInterceptor } from './shared/interceptor/error-interceptor';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ErrorInterceptor } from './shared/interceptor/error-interceptor';
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     BsDatepickerModule.forRoot(),
+    UserModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
