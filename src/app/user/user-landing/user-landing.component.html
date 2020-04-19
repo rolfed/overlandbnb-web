@@ -6,9 +6,9 @@
         <h1 class="display-4">Welcome.</h1>
         <p class="lead">Get started here by searching available sites.</p>
         <div class="search-container">
-          <form class="form-inline">
+          <form class="form-inline" (submit)="search(searchInput.value)">
             <div class="form-group">
-              <input class="form-control form-control-lg" type="text" placeholder="search">
+              <input class="form-control form-control-lg" type="text" placeholder="search" #searchInput>
             </div>
             <button type="submit" class="btn btn-outline-light btn-lg ml-2">
               <span class="fa fa-search"></span>
@@ -21,7 +21,7 @@
         <h1 class="display-4">Start A Road Trip.</h1>
         <p class="lead">Have an adventure to plan out? Use our road trip planner.</p>
         <div class="road-trip-container">
-          <button type="submit" class="btn btn-success btn-lg">Get Started</button>
+          <button type="button" class="btn btn-success btn-lg">Get Started</button>
         </div>
       </div>
 
@@ -41,6 +41,6 @@
   <div class="container">
     <h1 class="display-4">Become a host.</h1>
     <p>Want to make some money? Have some spare land? Become a host to post on Overland Bread and Breakfast.</p>
-    <button type="submit" class="btn btn-outline-dark btn-lg">Register Now</button>
+    <button type="button" class="btn btn-outline-dark btn-lg">Register Now</button>
   </div>
 </div>
