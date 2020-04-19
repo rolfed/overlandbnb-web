@@ -121,17 +121,19 @@ export class RegisterComponent implements OnInit {
   public onSubmit() {
     this.isSubmitted = true;
     if (this.registrationFG.valid) {
-      console.log('FORM VALUE', JSON.stringify(this.registrationFG.value, null, 2));
       const formValue = this.registrationFG.value;
       formValue.role = formValue.registerAsHost ? Permission.HOST : Permission.USER;
+      delete formValue.registerAsHost;
 
       this.authService.create(formValue).subscribe(
         resp => {
-          console.log('RESPONSE: ', resp);
+          console.log('RESPONSE: ', resp);  // TODO: Remove when done
           if (resp.status) {
             this.isRegistrationSuccesful = false;
             this.router.navigate(['/']).then(r => r);
           }
+          // TODO: Need to add case where account exists already
+          // TODO: Need to add case where account is under a different user
         },
         error => {
           console.log('ERROR: ', error);
