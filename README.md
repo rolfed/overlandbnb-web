@@ -1,4 +1,4 @@
-# OverlandbnbWeb https://github.com/rolfed/overlandbnb-web/workflows/.github/workflows/ng.yml/badge.svg?branch=develop
+# OverlandbnbWeb ~[](https://github.com/rolfed/overlandbnb-web/workflows/.github/workflows/ng.yml/badge.svg?branch=develop)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
